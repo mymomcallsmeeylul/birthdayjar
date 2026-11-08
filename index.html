@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birthday Jar</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <h1 class="title">Birthday Jar</h1>
+
+    <div class="jar" id="jar" aria-label="Glass jar with folded birthday notes">
+      <div class="jar-lid"></div>
+      <div class="jar-body">
+        <div class="jar-pile" id="pile"></div>
+        <div class="jar-papers" id="papers"></div>
+        <div class="jar-shine"></div>
+      </div>
+    </div>
+
+    <button class="create-btn" id="createBtn" type="button">
+      <span class="plus" aria-hidden="true">+</span>
+      <span>Create new note</span>
+    </button>
+  </main>
+
+  <!-- Note editor -->
+  <div class="overlay" id="overlay" hidden>
+    <div class="note-stage">
+      <div class="paper" id="paper">
+        <div class="paper-tape" aria-hidden="true"></div>
+        <textarea id="noteText" maxlength="500" placeholder="Write your birthday wish..." aria-label="Your birthday note"></textarea>
+      </div>
+
+      <div class="note-actions">
+        <button class="btn btn-ghost" id="backBtn" type="button">Go back</button>
+        <button class="btn btn-primary" id="sendBtn" type="button" disabled>Send note</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
