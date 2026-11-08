@@ -1,25 +1,24 @@
 :root {
-  --bg: #f7f3ea;
-  --bg-2: #efe8d9;
-  --ink: #3b3328;
-  --muted: #8a7f6e;
+  --bg: #f5f3ee;
+  --ink: #23201c;
+  --muted: #8b8478;
   --paper: #fdfbf4;
-  --paper-line: #d9e3ec;
-  --margin: #e9a3a3;
-  --glass-edge: rgba(150, 138, 118, 0.45);
-  --cork: #c9b89a;
-  --accent: #b9925a;
+  --glass-tint: #dde8f0;
+  --glass-edge: rgba(255, 255, 255, 0.75);
+  --line: rgba(35, 32, 28, 0.08);
+  --shadow: 0 1px 2px rgba(40, 34, 26, 0.06), 0 10px 30px rgba(40, 34, 26, 0.08);
 }
 
 * { box-sizing: border-box; }
-
 html, body { height: 100%; }
 
 body {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--ink);
-  background: radial-gradient(ellipse at 50% 30%, #fffdf8 0%, var(--bg) 55%, var(--bg-2) 100%);
+  background:
+    radial-gradient(120% 70% at 50% 0%, #ffffff 0%, rgba(255, 255, 255, 0) 60%),
+    linear-gradient(180deg, #f8f6f1 0%, var(--bg) 60%, #ebe7df 100%);
   background-color: var(--bg);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -31,16 +30,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 32px;
   padding: 32px 16px;
 }
 
 .title {
   margin: 0;
-  font-weight: 400;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  letter-spacing: 0.02em;
-  color: var(--ink);
+  font-weight: 500;
+  font-size: clamp(1.25rem, 3.6vw, 1.5rem);
+  letter-spacing: -0.01em;
 }
 
 /* ---------- Jar ---------- */
@@ -49,7 +47,13 @@ body {
   position: relative;
   width: min(260px, 70vw);
   height: min(390px, 58vh);
-  filter: drop-shadow(0 22px 26px rgba(90, 70, 40, 0.14));
+  transform-origin: 50% 100%;
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+  filter: drop-shadow(0 24px 28px rgba(60, 50, 35, 0.12));
+}
+
+.jar.lean {
+  transform: scale(1.08);
 }
 
 .jar-lid {
@@ -59,9 +63,9 @@ body {
   height: 9%;
   min-height: 34px;
   margin: 0 auto;
-  border-radius: 8px 8px 3px 3px;
-  background: linear-gradient(90deg, #b8a57f 0%, #e6dac0 30%, #d4c5a4 60%, #a89670 100%);
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.08), inset 0 2px 0 rgba(255, 255, 255, 0.35);
+  border-radius: 9px 9px 4px 4px;
+  background: linear-gradient(90deg, #cfc7b8 0%, #f4f1ea 35%, #e2dccf 65%, #b9b2a3 100%);
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.06), inset 0 2px 0 rgba(255, 255, 255, 0.6);
 }
 
 .jar-body {
@@ -71,17 +75,17 @@ body {
   right: 0;
   bottom: 0;
   overflow: hidden;
-  border: 2px solid var(--glass-edge);
+  border: 1.5px solid var(--glass-edge);
   border-radius: 26px 26px 56px 56px / 20px 20px 46px 46px;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.7) 0%,
-    rgba(255, 255, 255, 0.22) 14%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.22) 86%,
-    rgba(255, 255, 255, 0.6) 100%
+    rgba(221, 232, 240, 0.7) 0%,
+    rgba(255, 255, 255, 0.35) 16%,
+    rgba(221, 232, 240, 0.22) 50%,
+    rgba(255, 255, 255, 0.35) 84%,
+    rgba(221, 232, 240, 0.7) 100%
   );
-  box-shadow: inset 0 0 32px rgba(120, 100, 70, 0.14), inset 0 -10px 18px rgba(120, 100, 70, 0.1);
+  box-shadow: inset 0 0 28px rgba(140, 160, 175, 0.18), inset 0 -10px 18px rgba(140, 160, 175, 0.12);
 }
 
 .jar-pile {
@@ -90,7 +94,7 @@ body {
   right: 0;
   bottom: 0;
   height: 0;
-  background: linear-gradient(180deg, rgba(246, 238, 220, 0.85), rgba(228, 216, 190, 0.95));
+  background: linear-gradient(180deg, rgba(253, 251, 244, 0.85), rgba(236, 231, 220, 0.95));
   transition: height 0.9s cubic-bezier(0.3, 0.7, 0.3, 1);
 }
 
@@ -107,18 +111,18 @@ body {
   left: 9%;
   width: 7%;
   border-radius: 10px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75) 15%, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.8) 15%, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0));
   pointer-events: none;
 }
 
-/* Folded note inside the jar */
+/* folded note inside the jar */
 .mini-paper {
   position: absolute;
   width: 34px;
   height: 24px;
   border-radius: 2px;
-  background: linear-gradient(135deg, #fffdf6 0%, #fffdf6 48%, #e7dec8 52%, #f3ecdb 100%);
-  box-shadow: 0 1px 2px rgba(80, 60, 30, 0.25);
+  background: linear-gradient(135deg, #fffdf6 0%, #fffdf6 48%, #e9e5da 52%, #f5f2ea 100%);
+  box-shadow: 0 1px 2px rgba(60, 50, 35, 0.22);
   animation: drop-in 0.6s ease-out both;
 }
 
@@ -133,30 +137,32 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 26px;
-  border: 1px solid rgba(120, 100, 70, 0.25);
+  padding: 12px 22px 12px 14px;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: #fffdf8;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
   color: var(--ink);
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(90, 70, 40, 0.1);
+  box-shadow: var(--shadow);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.create-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 22px rgba(90, 70, 40, 0.14); }
+.create-btn:hover { transform: translateY(-1px); }
 .create-btn:active { transform: translateY(1px); }
 
 .plus {
   display: grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: var(--accent);
-  color: #fffdf8;
-  font-size: 1.3rem;
+  background: var(--ink);
+  color: #fff;
+  font-size: 1.1rem;
   line-height: 1;
 }
 
@@ -169,12 +175,24 @@ body {
   display: grid;
   place-items: center;
   padding: 24px 16px;
-  background: rgba(247, 243, 234, 0.82);
-  backdrop-filter: blur(3px);
+  background: rgba(245, 243, 238, 0.72);
+  backdrop-filter: blur(14px);
+  transition: background 0.5s ease, backdrop-filter 0.5s ease;
   animation: fade-in 0.25s ease both;
 }
 
 .overlay[hidden] { display: none; }
+
+.overlay.sending {
+  background: rgba(245, 243, 238, 0);
+  backdrop-filter: blur(0);
+  pointer-events: none;
+}
+
+.overlay.sending .note-actions {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
@@ -193,23 +211,21 @@ body {
   padding: 34px 22px 18px 52px;
   background-color: var(--paper);
   background-image:
-    linear-gradient(90deg, transparent 38px, var(--margin) 38px, var(--margin) 40px, transparent 40px),
-    repeating-linear-gradient(180deg, transparent 0 31px, var(--paper-line) 31px 32px),
+    linear-gradient(90deg, transparent 38px, #e9a3a3 38px, #e9a3a3 40px, transparent 40px),
+    repeating-linear-gradient(180deg, transparent 0 31px, #d9e3ec 31px 32px),
     radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.9), transparent 55%),
-    radial-gradient(circle at 85% 90%, rgba(200, 180, 140, 0.18), transparent 60%);
+    radial-gradient(circle at 85% 90%, rgba(200, 180, 140, 0.16), transparent 60%);
   background-attachment: local;
-  border-radius: 2px 3px 2px 4px;
+  border-radius: 3px;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 2px 3px rgba(60, 45, 25, 0.12),
-    0 14px 30px rgba(60, 45, 25, 0.18);
+    0 2px 3px rgba(60, 45, 25, 0.1),
+    0 16px 36px rgba(60, 45, 25, 0.16);
   transform: rotate(-1.2deg);
-  transform-origin: center;
   animation: paper-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 .paper::after {
-  /* faint paper grain */
   content: "";
   position: absolute;
   inset: 0;
@@ -233,7 +249,7 @@ body {
   width: 96px;
   height: 26px;
   transform: translateX(-50%) rotate(2deg);
-  background: rgba(240, 232, 210, 0.7);
+  background: rgba(240, 236, 226, 0.75);
   box-shadow: 0 1px 2px rgba(60, 45, 25, 0.1);
   z-index: 1;
 }
@@ -248,18 +264,17 @@ body {
   outline: 0;
   resize: none;
   background: transparent;
-  font: inherit;
-  font-size: 1.1rem;
+  font-family: Caveat, "Segoe Script", cursive;
+  font-size: 1.55rem;
   line-height: 32px;
   color: #2f2a24;
-  font-family: "Segoe Script", "Bradley Hand", "Comic Sans MS", cursive;
 }
 
-.paper textarea::placeholder { color: rgba(90, 80, 65, 0.45); }
+.paper textarea::placeholder { color: rgba(90, 80, 65, 0.4); }
 
 .note-actions {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
   justify-content: center;
 }
@@ -269,30 +284,37 @@ body {
   padding: 12px 22px;
   border-radius: 999px;
   font: inherit;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-  border: 1px solid rgba(120, 100, 70, 0.3);
+  border: 1px solid var(--line);
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
-.btn:disabled { opacity: 0.45; cursor: default; }
+.btn:disabled { opacity: 0.4; cursor: default; }
 .btn:not(:disabled):hover { transform: translateY(-1px); }
 
-.btn-ghost { background: #fffdf8; color: var(--ink); }
-
-.btn-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fffdf8;
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--ink);
+  box-shadow: var(--shadow);
 }
 
-/* ---------- Fly-to-jar clone ---------- */
+.btn-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
 
-.flyer {
+/* ---------- Three.js stage for the crumple ---------- */
+
+.stage {
   position: fixed;
-  z-index: 20;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
   pointer-events: none;
-  transform-origin: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
